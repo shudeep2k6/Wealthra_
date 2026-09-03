@@ -13,21 +13,23 @@ import {
   Info
 } from 'lucide-react';
 import { useFinancial } from '../context/FinancialContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Assessment = ({ onNavigate }) => {
   const { financialData, updateAssessment, formatCurrency } = useFinancial();
+  const { t } = useLanguage();
 
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({ ...financialData });
   const [isSaved, setIsSaved] = useState(false);
 
   const steps = [
-    { number: 1, title: 'Income', question: 'What money comes into your account each month?' },
-    { number: 2, title: 'Essential Expenses', question: 'How much do you usually spend on essential needs?' },
-    { number: 3, title: 'Savings', question: 'How much money could you use if something unexpected happened?' },
-    { number: 4, title: 'Debt & Loans', question: 'Do you currently have loans or other debt?' },
-    { number: 5, title: 'Stability Check', question: 'A few simple questions about your regular money routine.' },
-    { number: 6, title: 'Financial Goals', question: 'What are your primary financial priorities right now?' }
+    { number: 1, title: t('assessment.step1Title', 'Income'), question: t('assessment.step1Question', 'What money comes into your account each month?') },
+    { number: 2, title: t('assessment.step2Title', 'Essential Expenses'), question: t('assessment.step2Question', 'How much do you usually spend on essential needs?') },
+    { number: 3, title: t('assessment.step3Title', 'Savings'), question: t('assessment.step3Question', 'How much money could you use if something unexpected happened?') },
+    { number: 4, title: t('assessment.step4Title', 'Debt & Loans'), question: t('assessment.step4Question', 'Do you currently have loans or other debt?') },
+    { number: 5, title: t('assessment.step5Title', 'Stability Check'), question: t('assessment.step5Question', 'A few simple questions about your regular money routine.') },
+    { number: 6, title: t('assessment.step6Title', 'Financial Goals'), question: t('assessment.step6Question', 'What are your primary financial priorities right now?') }
   ];
 
   const handleNestedChange = (category, field, value) => {
@@ -81,7 +83,7 @@ export const Assessment = ({ onNavigate }) => {
       <div className="page-header" style={{ marginBottom: '1.25rem' }}>
         <div>
           <span className="badge badge-blue" style={{ fontSize: '0.85rem', marginBottom: '0.4rem', fontWeight: 600 }}>
-            Step {currentStep} of 6
+            {t('assessment.stepOf', 'Step {current} of {total}').replace('{current}', currentStep).replace('{total}', 6)}
           </span>
           <h1 style={{ fontSize: '1.75rem', color: 'var(--color-navy)' }}>
             {steps[currentStep - 1].title}
@@ -124,7 +126,7 @@ export const Assessment = ({ onNavigate }) => {
             <div className="fade-in">
               <div className="fields-2col">
                 <div className="form-group">
-                  <label className="form-label" style={{ fontSize: '0.95rem' }}>Monthly Income (Salary / Pension)</label>
+                  <label className="form-label" style={{ fontSize: '0.95rem' }}>{t('assessment.monthlyIncomeLabel', 'Monthly Income (Salary / Pension)')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -140,7 +142,7 @@ export const Assessment = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label" style={{ fontSize: '0.95rem' }}>Other Income (Family, Rent, Support)</label>
+                  <label className="form-label" style={{ fontSize: '0.95rem' }}>{t('assessment.otherIncomeLabel', 'Other Income (Family, Rent, Support)')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -156,7 +158,7 @@ export const Assessment = ({ onNavigate }) => {
               </div>
 
               <div style={{ backgroundColor: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '8px', padding: '1.25rem', marginTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '1rem', fontWeight: 600, color: '#166534' }}>Total Money Coming In</span>
+                <span style={{ fontSize: '1rem', fontWeight: 600, color: '#166534' }}>{t('assessment.totalIncomeCard', 'Total Money Coming In')}</span>
                 <strong style={{ fontSize: '1.4rem', color: '#166534' }}>
                   {formatCurrency((Number(formData.income.monthlyIncome) || 0) + (Number(formData.income.otherIncome) || 0))}
                 </strong>
@@ -169,7 +171,7 @@ export const Assessment = ({ onNavigate }) => {
             <div className="fade-in">
               <div className="fields-2col">
                 <div className="form-group">
-                  <label className="form-label">Housing (Rent / Maintenance)</label>
+                  <label className="form-label">{t('assessment.housingLabel', 'Housing / Rent')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -183,7 +185,7 @@ export const Assessment = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Food &amp; Groceries</label>
+                  <label className="form-label">{t('assessment.foodLabel', 'Food & Groceries')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -197,7 +199,7 @@ export const Assessment = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Utilities (Electricity, Water, LPG, Wi-Fi)</label>
+                  <label className="form-label">{t('assessment.utilitiesLabel', 'Utilities & Bills')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -211,7 +213,7 @@ export const Assessment = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Transport (Bus, Metro, Fuel)</label>
+                  <label className="form-label">{t('assessment.transportLabel', 'Transport / Fuel')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -225,7 +227,7 @@ export const Assessment = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Healthcare &amp; Medicines</label>
+                  <label className="form-label">{t('assessment.healthcareLabel', 'Healthcare & Medicine')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -239,7 +241,7 @@ export const Assessment = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Non-Essential &amp; Discretionary</label>
+                  <label className="form-label">{t('assessment.discretionaryLabel', 'Discretionary (Dining, Shopping)')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -259,7 +261,7 @@ export const Assessment = ({ onNavigate }) => {
           {currentStep === 3 && (
             <div className="fade-in">
               <div className="form-group">
-                <label className="form-label" style={{ fontSize: '0.95rem' }}>Current Bank Savings Balance</label>
+                <label className="form-label" style={{ fontSize: '0.95rem' }}>{t('assessment.bankSavingsLabel', 'Current Bank Savings')}</label>
                 <div className="input-prefix-wrapper">
                   <span className="input-prefix">₹</span>
                   <input
@@ -273,7 +275,7 @@ export const Assessment = ({ onNavigate }) => {
               </div>
 
               <div className="form-group">
-                <label className="form-label" style={{ fontSize: '0.95rem' }}>Dedicated Emergency Savings (Protected money)</label>
+                <label className="form-label" style={{ fontSize: '0.95rem' }}>{t('assessment.emergencyFundLabel', 'Emergency Fund Reserve')}</label>
                 <div className="input-prefix-wrapper">
                   <span className="input-prefix">₹</span>
                   <input
@@ -287,7 +289,7 @@ export const Assessment = ({ onNavigate }) => {
               </div>
 
               <div className="form-group">
-                <label className="form-label" style={{ fontSize: '0.95rem' }}>Monthly Savings (What you set aside each month)</label>
+                <label className="form-label" style={{ fontSize: '0.95rem' }}>{t('assessment.monthlySavingsLabel', 'Monthly Savings Contribution')}</label>
                 <div className="input-prefix-wrapper">
                   <span className="input-prefix">₹</span>
                   <input
@@ -307,7 +309,7 @@ export const Assessment = ({ onNavigate }) => {
             <div className="fade-in">
               <div className="fields-2col">
                 <div className="form-group">
-                  <label className="form-label">Total Debt Balance (All loans combined)</label>
+                  <label className="form-label">{t('assessment.totalDebtLabel', 'Total Outstanding Debt')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -321,7 +323,7 @@ export const Assessment = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Monthly EMI / Loan Payments</label>
+                  <label className="form-label">{t('assessment.monthlyEMILabel', 'Monthly Loan Repayments (EMI)')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -335,7 +337,7 @@ export const Assessment = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Home Loan Principal</label>
+                  <label className="form-label">{t('assessment.homeLoanLabel', 'Home Loan Balance')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -349,7 +351,7 @@ export const Assessment = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Credit Card Outstanding Balance</label>
+                  <label className="form-label">{t('assessment.creditCardLabel', 'Credit Card Minimum / Balance')}</label>
                   <div className="input-prefix-wrapper">
                     <span className="input-prefix">₹</span>
                     <input
@@ -371,7 +373,7 @@ export const Assessment = ({ onNavigate }) => {
               <div className="habits-list">
                 <div className="habit-item">
                   <span className="habit-question" style={{ fontSize: '0.95rem' }}>
-                    Do you have enough savings to cover unexpected expenses?
+                    {t('assessment.emergencyCoverQuestion', 'How would you describe your emergency cash reserve?')}
                   </span>
                   <label className="toggle-switch">
                     <input
@@ -393,7 +395,7 @@ export const Assessment = ({ onNavigate }) => {
 
                 <div className="habit-item">
                   <span className="habit-question" style={{ fontSize: '0.95rem' }}>
-                    Have your essential expenses increased noticeably recently?
+                    {t('assessment.expensesIncreasedQuestion', 'Have your routine household expenses increased noticeably recently?')}
                   </span>
                   <label className="toggle-switch">
                     <input
@@ -407,7 +409,7 @@ export const Assessment = ({ onNavigate }) => {
 
                 <div className="habit-item">
                   <span className="habit-question" style={{ fontSize: '0.95rem' }}>
-                    Have you missed or delayed any loan or utility bill payments?
+                    {t('assessment.missedPaymentsQuestion', 'Have you missed or delayed any loan EMI or bill payment recently?')}
                   </span>
                   <label className="toggle-switch">
                     <input
@@ -421,7 +423,7 @@ export const Assessment = ({ onNavigate }) => {
 
                 <div className="habit-item">
                   <span className="habit-question" style={{ fontSize: '0.95rem' }}>
-                    Do you frequently depend on credit to pay for essential needs?
+                    {t('assessment.creditRelianceQuestion', 'Do you frequently rely on credit cards or loans for routine groceries/bills?')}
                   </span>
                   <label className="toggle-switch">
                     <input
@@ -440,11 +442,17 @@ export const Assessment = ({ onNavigate }) => {
           {currentStep === 6 && (
             <div className="fade-in">
               <p style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)', marginBottom: '1.25rem' }}>
-                Select all goals you would like our early warning and support engine to guide you toward:
+                {t('assessment.goalsPrompt', 'Select all priorities that apply to you:')}
               </p>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.85rem', marginBottom: '1.5rem' }}>
-                {goalsList.map((g) => {
+                {[
+                  t('assessment.goalEmergency', 'Build Emergency Buffer'),
+                  t('assessment.goalDebt', 'Clear Existing Debt'),
+                  t('assessment.goalExpenses', 'Lower Monthly Expenses'),
+                  t('assessment.goalHome', 'Save For Home / Asset'),
+                  t('assessment.goalCredit', 'Improve Credit Score')
+                ].map((g) => {
                   const selected = formData.goals.includes(g);
                   return (
                     <div
@@ -481,7 +489,7 @@ export const Assessment = ({ onNavigate }) => {
                 onClick={() => setCurrentStep(currentStep - 1)}
               >
                 <ArrowLeft size={16} />
-                <span>Previous Step</span>
+                <span>{t('assessment.backBtn', '← Previous Step')}</span>
               </button>
             ) : (
               <div />
@@ -493,13 +501,13 @@ export const Assessment = ({ onNavigate }) => {
                 className="btn btn-primary"
                 onClick={() => setCurrentStep(currentStep + 1)}
               >
-                <span>Continue to Step {currentStep + 1}</span>
+                <span>{t('assessment.continueBtn', 'Continue to Step {next} →').replace('{next}', currentStep + 1)}</span>
                 <ArrowRight size={16} />
               </button>
             ) : (
               <button type="submit" className="btn btn-primary btn-lg" disabled={isSaved}>
                 <Sparkles size={18} />
-                <span>{isSaved ? 'Updating Wellness...' : 'Generate My Financial Wellness Profile'}</span>
+                <span>{isSaved ? t('assessment.updatingNotice', 'Updating...') : t('assessment.submitBtn', 'Calculate & Update Health Profile')}</span>
               </button>
             )}
           </div>

@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import { Bell, Menu, Eye, Volume2, ShieldCheck, AlertCircle, TrendingDown } from 'lucide-react';
+import { Bell, Menu, Volume2, ShieldCheck, AlertCircle, TrendingDown } from 'lucide-react';
 import { useFinancial } from '../context/FinancialContext';
 import { useAccessibility } from '../context/AccessibilityContext';
+import { useLanguage } from '../context/LanguageContext';
 import { HelpButton } from './HelpButton';
+import { LanguageSelector } from './LanguageSelector';
 
 export const Navbar = ({ setActivePage, onOpenMobileMenu }) => {
   const { currentUser } = useFinancial();
   const { setIsPanelOpen, voiceEnabled, setVoiceEnabled } = useAccessibility();
+  const { t } = useLanguage();
   const [showNotifications, setShowNotifications] = useState(false);
 
   const getGreeting = () => {
     const hour = new Date().getHours();
-    if (hour < 12) return 'Good Morning';
-    if (hour < 17) return 'Good Afternoon';
-    return 'Good Evening';
+    if (hour < 12) return t('topbar.goodMorning', 'Good Morning');
+    if (hour < 17) return t('topbar.goodAfternoon', 'Good Afternoon');
+    return t('topbar.goodEvening', 'Good Evening');
   };
 
   const notifications = [
@@ -52,21 +55,13 @@ export const Navbar = ({ setActivePage, onOpenMobileMenu }) => {
         </button>
         <div className="topbar-greeting">
           <h2 className="greeting-title">{getGreeting()}, {currentUser.name.split(' ')[0]}</h2>
-          <span className="greeting-sub">Inclusive Digital Banking &amp; Wellness Guard Active</span>
+          <span className="greeting-sub">{t('topbar.activeSub', 'Inclusive Digital Banking & Wellness Guard Active')}</span>
         </div>
       </div>
 
       <div className="topbar-right">
-        {/* Prominent Header Accessibility Button */}
-        <button
-          type="button"
-          className="accessibility-bar-btn"
-          onClick={() => setIsPanelOpen(true)}
-          aria-label="Open accessibility options"
-        >
-          <Eye size={16} />
-          <span>Accessibility</span>
-        </button>
+        {/* Language Selector Dropdown */}
+        <LanguageSelector variant="topbar" />
 
         {/* Voice Assistant Toggle */}
         <button
@@ -77,7 +72,7 @@ export const Navbar = ({ setActivePage, onOpenMobileMenu }) => {
           style={{ display: 'none', md: 'inline-flex' }}
         >
           <Volume2 size={15} />
-          <span>Voice Mode</span>
+          <span>{t('topbar.voiceMode', 'Voice Mode')}</span>
         </button>
 
         {/* Customer Assistance Help Button */}

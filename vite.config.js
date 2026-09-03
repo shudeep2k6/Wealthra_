@@ -5,7 +5,18 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
+    host: true,
     port: 3000,
-    open: false
+    open: true,
+    watch: {
+      ignored: [
+        '**/backend/**',
+        '**/monthly_income_manager_bundle/**',
+        '**/loan_terms_detector_bundle/**',
+        '**/.git/**',
+        '**/*.mp4',
+        '**/A_premium_cinematic_fintech_AI.mp4'
+      ]
+    }
   }
 });

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FinancialProvider, useFinancial } from './context/FinancialContext';
 import { AccessibilityProvider } from './context/AccessibilityContext';
+import { LanguageProvider } from './context/LanguageContext';
 import { Sidebar } from './components/Sidebar';
 import { Navbar } from './components/Navbar';
 import { AccessibilityPanel } from './components/AccessibilityPanel';
@@ -18,8 +19,12 @@ import { PredictiveRisk } from './pages/PredictiveRisk';
 import { Interventions } from './pages/Interventions';
 import { Expenses } from './pages/Expenses';
 import { DebtHealth } from './pages/DebtHealth';
+import { LoanTermsDetector } from './pages/LoanTermsDetector';
+import { MonthlyIncomeManager } from './pages/MonthlyIncomeManager';
+import { ScamShield } from './pages/ScamShield';
 import { FinancialGuide } from './pages/FinancialGuide';
 import { ProfileSettings } from './pages/ProfileSettings';
+import { FloatingAiChat } from './components/FloatingAiChat';
 
 // Styles
 import './styles/global.css';
@@ -28,6 +33,7 @@ import './styles/layout.css';
 import './styles/components.css';
 import './styles/dashboard.css';
 import './styles/pages.css';
+import './styles/loanDetector.css';
 
 const AppContent = () => {
   const { isAuthenticated } = useFinancial();
@@ -41,6 +47,7 @@ const AppContent = () => {
         <Landing onNavigate={setActivePage} />
         <AccessibilityPanel />
         <VoiceAssistant onNavigate={setActivePage} />
+        <FloatingAiChat onNavigate={setActivePage} />
       </>
     );
   }
@@ -51,6 +58,7 @@ const AppContent = () => {
         <Auth onNavigate={setActivePage} />
         <AccessibilityPanel />
         <VoiceAssistant onNavigate={setActivePage} />
+        <FloatingAiChat onNavigate={setActivePage} />
       </>
     );
   }
@@ -84,6 +92,12 @@ const AppContent = () => {
         return <Expenses onNavigate={setActivePage} />;
       case 'debt':
         return <DebtHealth onNavigate={setActivePage} />;
+      case 'loan-detector':
+        return <LoanTermsDetector onNavigate={setActivePage} />;
+      case 'monthly-income':
+        return <MonthlyIncomeManager onNavigate={setActivePage} />;
+      case 'scamshield':
+        return <ScamShield onNavigate={setActivePage} />;
       case 'guidance':
         return <FinancialGuide onNavigate={setActivePage} />;
       case 'profile':
@@ -120,16 +134,21 @@ const AppContent = () => {
 
       {/* Global Voice Assistant Guidance */}
       <VoiceAssistant onNavigate={setActivePage} />
+
+      {/* Floating 24/7 AI Chat Assistant */}
+      <FloatingAiChat onNavigate={setActivePage} />
     </div>
   );
 };
 
 export default function App() {
   return (
-    <AccessibilityProvider>
-      <FinancialProvider>
-        <AppContent />
-      </FinancialProvider>
-    </AccessibilityProvider>
+    <LanguageProvider>
+      <AccessibilityProvider>
+        <FinancialProvider>
+          <AppContent />
+        </FinancialProvider>
+      </AccessibilityProvider>
+    </LanguageProvider>
   );
 }

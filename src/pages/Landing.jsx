@@ -3,41 +3,34 @@ import {
   ShieldAlert,
   ArrowRight,
   ShieldCheck,
-  Eye,
   CheckCircle2,
   HeartHandshake,
   TrendingDown,
   Sparkles,
-  Users
+  Users,
+  Wallet,
+  PieChart,
+  PiggyBank,
+  CreditCard,
+  Lock,
+  Activity,
+  Search
 } from 'lucide-react';
-import { useAccessibility } from '../context/AccessibilityContext';
-
 export const Landing = ({ onNavigate }) => {
-  const { setIsPanelOpen } = useAccessibility();
 
   return (
     <div className="landing-page">
       {/* Top Navbar */}
       <nav className="landing-nav">
-        <div className="brand-logo" onClick={() => onNavigate('landing')} style={{ cursor: 'pointer' }}>
-          <div className="brand-icon-box">
-            <ShieldAlert size={18} />
-          </div>
-          <span className="brand-name">Wealthra</span>
-          <span className="brand-badge" style={{ backgroundColor: '#F0FDF4', color: '#16A34A' }}>INCLUSIVE</span>
+        <div className="landing-brand-capsule" onClick={() => onNavigate('landing')}>
+          <img
+            src="/wealthra_logo.png"
+            alt="Wealthra - Predict . Empower . Protect"
+          />
         </div>
 
         <div className="landing-nav-links">
-          <button
-            type="button"
-            className="btn btn-secondary btn-sm"
-            onClick={() => setIsPanelOpen(true)}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
-          >
-            <Eye size={15} />
-            <span>Accessibility Mode</span>
-          </button>
-          <button className="btn btn-secondary btn-sm" onClick={() => onNavigate('auth')}>
+          <button className="btn btn-secondary btn-sm" onClick={() => onNavigate('auth')} style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.25)', backgroundColor: 'rgba(255,255,255,0.1)' }}>
             Sign In
           </button>
           <button className="btn btn-primary btn-sm" onClick={() => onNavigate('dashboard')}>
@@ -47,140 +40,259 @@ export const Landing = ({ onNavigate }) => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="landing-hero">
-        <div className="hero-pill-badge">
-          <span className="dot"></span>
-          <span>Preventing Financial Distress Through Inclusive Digital Banking</span>
+      {/* Hero Header Part with Continuous Dynamic Video Background & Glassmorphic Card */}
+      <header className="landing-hero-video-section">
+        {/* Continuous Dynamic Background Video */}
+        <div className="hero-video-bg-wrapper">
+          <video
+            className="hero-video-element"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/A_premium_cinematic_fintech_AI.mp4" type="video/mp4" />
+          </video>
+          {/* Frosted Dark Glass Overlay */}
+          <div className="hero-video-glass-overlay" />
         </div>
 
-        <h1>Your Financial Health, Made Simple.</h1>
-
-        <p className="hero-subtitle">
-          Understand your financial situation, identify early warning signs, and get personalized guidance before financial stress becomes a crisis.
-        </p>
-
-        <div className="hero-cta-group">
-          <button className="btn btn-primary btn-lg" onClick={() => onNavigate('assessment')}>
-            <span>Check My Financial Health</span>
-            <ArrowRight size={18} />
-          </button>
-          <button className="btn btn-secondary btn-lg" onClick={() => onNavigate('dashboard')}>
-            <span>How It Works</span>
-          </button>
-        </div>
-
-        {/* Trust Statement */}
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.6rem',
-            padding: '0.6rem 1.25rem',
-            backgroundColor: '#FFFFFF',
-            border: '1px solid var(--color-border)',
-            borderRadius: '99px',
-            fontSize: '0.85rem',
-            color: 'var(--color-navy)',
-            marginBottom: '3rem',
-            boxShadow: 'var(--shadow-xs)'
-          }}
-        >
-          <HeartHandshake size={18} color="#2563EB" />
-          <span>
-            <strong>Designed for everyone</strong> — including elderly users and people with different accessibility needs.
-          </span>
-        </div>
-
-        {/* 3 Simple Steps */}
-        <div style={{ width: '100%', maxWidth: '980px', margin: '0 auto 3rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', textAlign: 'left' }}>
-            <div className="card" style={{ borderTop: '4px solid #2563EB' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#2563EB', marginBottom: '0.35rem' }}>01</div>
-              <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem' }}>Understand</h3>
-              <p style={{ fontSize: '0.875rem' }}>
-                Connect or enter your financial information in short, simple steps with large readable text and zero jargon.
-              </p>
+        {/* Hero Glassmorphic Card Container */}
+        <div className="hero-glass-container">
+          <div className="hero-glass-card">
+            <div className="hero-glass-pill-badge">
+              <span className="dot"></span>
+              <span>Preventing Financial Distress Through Inclusive Digital Banking</span>
             </div>
 
-            <div className="card" style={{ borderTop: '4px solid #F59E0B' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#F59E0B', marginBottom: '0.35rem' }}>02</div>
-              <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem' }}>Detect</h3>
-              <p style={{ fontSize: '0.875rem' }}>
-                Identify early signs of financial stress before debt piles up or payments become difficult to manage.
-              </p>
+            <h1 className="hero-glass-title">Your Financial Health, Made Simple.</h1>
+
+            <p className="hero-glass-subtitle">
+              Understand your financial situation, identify early warning signs, and get personalized guidance before financial stress becomes a crisis.
+            </p>
+
+            <div className="hero-glass-cta-group">
+              <button className="btn btn-primary btn-lg hero-glass-btn-primary" onClick={() => onNavigate('assessment')}>
+                <span>Check My Financial Health</span>
+                <ArrowRight size={18} />
+              </button>
+              <button className="btn btn-secondary btn-lg hero-glass-btn-secondary" onClick={() => onNavigate('dashboard')}>
+                <span>How It Works</span>
+              </button>
             </div>
 
-            <div className="card" style={{ borderTop: '4px solid #16A34A' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#16A34A', marginBottom: '0.35rem' }}>03</div>
-              <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem' }}>Prevent</h3>
-              <p style={{ fontSize: '0.875rem' }}>
-                Receive personalized and accessible guidance with step-by-step action plans designed to keep your money safe.
-              </p>
+            {/* Trust Statement inside glass */}
+            <div className="hero-glass-trust">
+              <HeartHandshake size={18} color="#60A5FA" />
+              <span>
+                <strong>Designed for everyone</strong> — including elderly users and people with different accessibility needs.
+              </span>
             </div>
           </div>
         </div>
+      </header>
+
+      {/* Landing Page Body (3 Steps, Cockpit Preview, Capabilities) */}
+      <main className="landing-body-section">
+        {/* 3 Simple Steps */}
+        <section className="landing-steps-container">
+          <div className="landing-steps-header">
+            <span className="landing-steps-badge">
+              <Sparkles size={13} />
+              <span>The Wealthra Methodology</span>
+            </span>
+            <h2 className="landing-steps-title">Three Simple Steps to Financial Peace of Mind</h2>
+            <p className="landing-steps-subtitle">
+              Proactive banking intelligence designed to keep you ahead of financial stress with total clarity and zero jargon.
+            </p>
+          </div>
+
+          <div className="steps-cards-grid">
+            {/* Step 1: Understand */}
+            <div className="modern-step-card">
+              <span className="step-card-watermark">01</span>
+              <div>
+                <div className="step-icon-badge step-icon-blue">
+                  <Search size={22} />
+                </div>
+                <h3 className="step-card-title">Understand</h3>
+                <p className="step-card-desc">
+                  Connect or enter your financial information in short, simple steps with large readable text and zero jargon.
+                </p>
+              </div>
+              <div className="step-card-chip">
+                <CheckCircle2 size={14} color="#2563EB" />
+                <span>Large Readable Text &amp; Zero Jargon</span>
+              </div>
+            </div>
+
+            {/* Step 2: Detect */}
+            <div className="modern-step-card">
+              <span className="step-card-watermark">02</span>
+              <div>
+                <div className="step-icon-badge step-icon-amber">
+                  <Activity size={22} />
+                </div>
+                <h3 className="step-card-title">Detect</h3>
+                <p className="step-card-desc">
+                  Identify early signs of financial stress before debt piles up or payments become difficult to manage.
+                </p>
+              </div>
+              <div className="step-card-chip">
+                <CheckCircle2 size={14} color="#D97706" />
+                <span>Proactive Stress &amp; Debt Alerts</span>
+              </div>
+            </div>
+
+            {/* Step 3: Prevent */}
+            <div className="modern-step-card">
+              <span className="step-card-watermark">03</span>
+              <div>
+                <div className="step-icon-badge step-icon-emerald">
+                  <ShieldCheck size={22} />
+                </div>
+                <h3 className="step-card-title">Prevent</h3>
+                <p className="step-card-desc">
+                  Receive personalized and accessible guidance with step-by-step action plans designed to keep your money safe.
+                </p>
+              </div>
+              <div className="step-card-chip">
+                <CheckCircle2 size={14} color="#059669" />
+                <span>Tailored Action Roadmaps</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Clean Dashboard Preview Card */}
-        <div className="hero-visual-wrapper">
-          <div className="hero-preview-topbar">
-            <div className="hero-preview-dots">
-              <span className="preview-dot"></span>
-              <span className="preview-dot"></span>
-              <span className="preview-dot"></span>
+        <section className="cockpit-preview-window">
+          {/* macOS Browser Topbar */}
+          <div className="cockpit-window-topbar">
+            <div className="mac-window-controls">
+              <span className="mac-dot mac-dot-close"></span>
+              <span className="mac-dot mac-dot-min"></span>
+              <span className="mac-dot mac-dot-max"></span>
             </div>
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-text-secondary)' }}>
-              Wealthra Banking Wellness Cockpit — Live Demonstration
-            </span>
-            <span className="badge badge-positive">
-              <span className="user-status-dot"></span>
-              Wellness Score: 74 Stable
-            </span>
+
+            <div className="cockpit-url-pill">
+              <Lock size={12} color="#10B981" />
+              <span>wealthra.app/live-cockpit</span>
+            </div>
+
+            <div className="cockpit-status-badge">
+              <span className="pulse-dot-emerald"></span>
+              <span>Wellness Score: 74 Stable</span>
+            </div>
           </div>
 
-          <div className="hero-preview-body">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.25rem' }}>
-              <div style={{ background: '#F8FAFC', padding: '1rem', borderRadius: '8px', border: '1px solid #E2E8F0', textAlign: 'left' }}>
-                <span style={{ fontSize: '0.75rem', color: '#64748B', display: 'block', marginBottom: '0.25rem' }}>Monthly Income</span>
-                <strong style={{ fontSize: '1.35rem', color: '#0B1220' }}>₹50,000</strong>
-                <span className="badge badge-positive" style={{ display: 'block', width: 'fit-content', marginTop: '0.35rem' }}>Stable</span>
+          {/* Cockpit Window Content */}
+          <div className="cockpit-window-body">
+            <div className="cockpit-body-subheading">
+              <span style={{ fontSize: '0.785rem', fontWeight: 700, color: 'var(--color-navy)', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <Sparkles size={14} color="#2563EB" />
+                <span>Wealthra Banking Wellness Cockpit — Live Demonstration</span>
+              </span>
+              <span style={{ fontSize: '0.75rem', color: '#64748B' }}>Real-Time Household Intelligence</span>
+            </div>
+
+            {/* 4 Metric Cards */}
+            <div className="cockpit-metrics-grid">
+              {/* Monthly Income */}
+              <div className="cockpit-metric-card">
+                <div>
+                  <div className="metric-card-header">
+                    <div className="metric-mini-icon" style={{ backgroundColor: '#EFF6FF', color: '#2563EB' }}>
+                      <Wallet size={15} />
+                    </div>
+                    <span className="metric-card-label">Monthly Income</span>
+                  </div>
+                  <div className="metric-card-value">₹50,000</div>
+                </div>
+                <div className="metric-card-footer">
+                  <span className="badge badge-positive" style={{ padding: '0.2rem 0.5rem', fontSize: '0.7rem' }}>Stable</span>
+                  <span>Net inflow</span>
+                </div>
               </div>
 
-              <div style={{ background: '#F8FAFC', padding: '1rem', borderRadius: '8px', border: '1px solid #E2E8F0', textAlign: 'left' }}>
-                <span style={{ fontSize: '0.75rem', color: '#64748B', display: 'block', marginBottom: '0.25rem' }}>Essential Expenses</span>
-                <strong style={{ fontSize: '1.35rem', color: '#0B1220' }}>₹27,500</strong>
-                <span style={{ fontSize: '0.75rem', color: '#64748B', display: 'block', marginTop: '0.35rem' }}>55% of income</span>
+              {/* Essential Expenses */}
+              <div className="cockpit-metric-card">
+                <div>
+                  <div className="metric-card-header">
+                    <div className="metric-mini-icon" style={{ backgroundColor: '#FFFBEB', color: '#D97706' }}>
+                      <PieChart size={15} />
+                    </div>
+                    <span className="metric-card-label">Essential Expenses</span>
+                  </div>
+                  <div className="metric-card-value">₹27,500</div>
+                </div>
+                <div className="metric-card-footer">
+                  <span style={{ fontWeight: 600, color: '#D97706' }}>55% of income</span>
+                  <span>Safe ceiling</span>
+                </div>
               </div>
 
-              <div style={{ background: '#F8FAFC', padding: '1rem', borderRadius: '8px', border: '1px solid #E2E8F0', textAlign: 'left' }}>
-                <span style={{ fontSize: '0.75rem', color: '#64748B', display: 'block', marginBottom: '0.25rem' }}>Total Savings</span>
-                <strong style={{ fontSize: '1.35rem', color: '#0B1220' }}>₹1,20,000</strong>
-                <span className="badge badge-positive" style={{ display: 'block', width: 'fit-content', marginTop: '0.35rem' }}>Growing</span>
+              {/* Total Savings */}
+              <div className="cockpit-metric-card">
+                <div>
+                  <div className="metric-card-header">
+                    <div className="metric-mini-icon" style={{ backgroundColor: '#ECFDF5', color: '#059669' }}>
+                      <PiggyBank size={15} />
+                    </div>
+                    <span className="metric-card-label">Total Savings</span>
+                  </div>
+                  <div className="metric-card-value">₹1,20,000</div>
+                </div>
+                <div className="metric-card-footer">
+                  <span className="badge badge-positive" style={{ padding: '0.2rem 0.5rem', fontSize: '0.7rem' }}>Growing</span>
+                  <span>4.3 mos buffer</span>
+                </div>
               </div>
 
-              <div style={{ background: '#F8FAFC', padding: '1rem', borderRadius: '8px', border: '1px solid #E2E8F0', textAlign: 'left' }}>
-                <span style={{ fontSize: '0.75rem', color: '#64748B', display: 'block', marginBottom: '0.25rem' }}>Debt Payments</span>
-                <strong style={{ fontSize: '1.35rem', color: '#0B1220' }}>₹9,500/mo</strong>
-                <span className="badge badge-blue" style={{ display: 'block', width: 'fit-content', marginTop: '0.35rem' }}>Moderate</span>
+              {/* Debt Payments */}
+              <div className="cockpit-metric-card">
+                <div>
+                  <div className="metric-card-header">
+                    <div className="metric-mini-icon" style={{ backgroundColor: '#F5F3FF', color: '#7C3AED' }}>
+                      <CreditCard size={15} />
+                    </div>
+                    <span className="metric-card-label">Debt Payments</span>
+                  </div>
+                  <div className="metric-card-value">₹9,500<span style={{ fontSize: '0.9rem', fontWeight: 500, color: '#64748B' }}>/mo</span></div>
+                </div>
+                <div className="metric-card-footer">
+                  <span className="badge badge-blue" style={{ padding: '0.2rem 0.5rem', fontSize: '0.7rem' }}>Moderate</span>
+                  <span>19% DTI ratio</span>
+                </div>
               </div>
             </div>
 
-            <div style={{ padding: '1rem', backgroundColor: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '8px', textAlign: 'left', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
-              <div>
-                <strong style={{ fontSize: '0.9rem', color: '#166534', display: 'block' }}>
-                  Current Status: Financial Distress Risk is LOW (24%)
-                </strong>
-                <span style={{ fontSize: '0.8rem', color: '#15803D' }}>
-                  “Your income and expenses are currently balanced. However, your savings could provide more protection against unexpected expenses.”
-                </span>
+            {/* AI Status Cockpit Banner */}
+            <div className="cockpit-ai-status-banner">
+              <div className="ai-status-left">
+                <div className="ai-status-shield-circle">
+                  <ShieldCheck size={26} color="#16A34A" />
+                </div>
+                <div>
+                  <div className="ai-status-title">
+                    <span>Current Status: Financial Distress Risk is LOW (24%)</span>
+                  </div>
+                  <p className="ai-status-quote">
+                    “Your income and expenses are currently balanced. However, your savings could provide more protection against unexpected expenses.”
+                  </p>
+                </div>
               </div>
-              <button className="btn btn-primary btn-sm" onClick={() => onNavigate('dashboard')}>
-                View Full Cockpit
+
+              <button
+                className="cockpit-launch-btn"
+                onClick={() => onNavigate('dashboard')}
+              >
+                <span>View Full Cockpit</span>
+                <ArrowRight size={16} />
               </button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       {/* Footer */}
       <footer className="landing-footer">

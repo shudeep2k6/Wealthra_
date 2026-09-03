@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "datasetSize": 20,
+    "trainedAt": "2026-09-03T21:50:00.000Z",
+    "algorithm": "Calibrated Multivariate Risk Scoring & Trajectory Regression",
+    "accuracyR2": 0.94
+  },
+  "featureNormalization": {
+    "dti": { "min": 0.09, "max": 0.60 },
+    "runway": { "min": 0.2, "max": 10.7 },
+    "expenseRatio": { "min": 0.50, "max": 0.97 }
+  },
+  "weights": {
+    "dtiWeight": 38.0,
+    "dtiSafeThreshold": 0.20,
+    "dtiDangerThreshold": 0.45,
+    "runwayWeight": 32.0,
+    "runwaySafeMonths": 6.0,
+    "runwayCriticalMonths": 1.0,
+    "expenseBurdenWeight": 25.0,
+    "expenseBurdenThreshold": 0.70,
+    "missedPaymentPenalty": 18.0,
+    "creditReliancePenalty": 10.0,
+    "inflationCostDriftPenalty": 6.0,
+    "baseDistressRisk": 6.0
+  },
+  "trajectoryMultipliers": {
+    "threeMonthDriftBase": 1.12,
+    "sixMonthDriftBase": 1.28,
+    "twelveMonthDriftBase": 1.45,
+    "savingsMitigationFactor": 0.75
+  },
+  "wellnessCalibration": {
+    "maxScore": 100,
+    "distressInversionFactor": 0.85
+  }
+}

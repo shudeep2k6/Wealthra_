@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { useFinancial } from '../context/FinancialContext';
 import { useAccessibility } from '../context/AccessibilityContext';
+import { useLanguage } from '../context/LanguageContext';
 import { WellnessScore } from '../components/WellnessScore';
 import { MetricCard } from '../components/MetricCard';
 import { RecommendationCard } from '../components/RecommendationCard';
@@ -23,9 +24,17 @@ import { StrategyModal } from '../components/StrategyModal';
 export const Dashboard = ({ onNavigate }) => {
   const { currentUser, calculations, formatCurrency } = useFinancial();
   const { simpleLanguage } = useAccessibility();
+  const { t, tTier } = useLanguage();
   const [activeModal, setActiveModal] = useState(null);
 
   const topIntervention = calculations.interventions[0];
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return t('topbar.goodMorning', 'Good Morning');
+    if (hour < 17) return t('topbar.goodAfternoon', 'Good Afternoon');
+    return t('topbar.goodEvening', 'Good Evening');
+  };
 
   return (
     <div className="page-container fade-in">
@@ -43,22 +52,22 @@ export const Dashboard = ({ onNavigate }) => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-blue)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              Your Daily Financial Wellness Snapshot
+              {t('dashboard.threeAnswersTitle', 'Your Daily Financial Wellness Snapshot')}
             </span>
             <h1 style={{ fontSize: '1.65rem', color: 'var(--color-navy)', marginTop: '0.2rem', marginBottom: '0.25rem' }}>
-              Good Morning, {currentUser.name.split(' ')[0]}
+              {getGreeting()}, {currentUser.name.split(' ')[0]}
             </h1>
             <p style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)' }}>
-              Answering your three most important questions immediately:
+              {t('dashboard.subtitle', 'Answering your three most important questions immediately:')}
             </p>
           </div>
 
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
             <button className="btn btn-outline-primary btn-sm" onClick={() => onNavigate('assessment')}>
-              Update My Information
+              {t('dashboard.updateInfo', 'Update My Information')}
             </button>
             <button className="btn btn-primary btn-sm" onClick={() => onNavigate('warnings')}>
-              View Early Warnings (4)
+              {t('warnings.title', 'View Early Warnings')} (4)
             </button>
           </div>
         </div>
@@ -68,41 +77,49 @@ export const Dashboard = ({ onNavigate }) => {
           {/* Answer 1 */}
           <div style={{ backgroundColor: 'var(--color-surface-subtle)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
-              1. How am I doing?
+              1. {t('dashboard.howAmIDoing', 'How am I doing?')}
             </span>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
-              <strong style={{ fontSize: '1.25rem', color: 'var(--color-navy)' }}>74 / 100</strong>
-              <span className="badge badge-positive">STABLE</span>
+              <strong style={{ fontSize: '1.25rem', color: 'var(--color-navy)' }}>{calculations.wellnessScore} / 100</strong>
+              <span className={`badge ${calculations.wellnessScore >= 65 ? 'badge-positive' : (calculations.wellnessScore >= 50 ? 'badge-warning' : 'badge-danger')}`}>
+                {calculations.wellnessStatus}
+              </span>
             </div>
             <p style={{ fontSize: '0.825rem', color: 'var(--color-text-secondary)', marginTop: '0.35rem' }}>
-              Your finances are balanced, though savings could provide deeper protection.
+              {calculations.wellnessSummary}
             </p>
           </div>
 
           {/* Answer 2 */}
           <div style={{ backgroundColor: '#FFFBEB', padding: '1rem', borderRadius: '8px', border: '1px solid #FDE68A' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#B45309', textTransform: 'uppercase' }}>
-              2. Is anything concerning?
+              2. {t('dashboard.anythingConcerning', 'Is anything concerning?')}
             </span>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
-              <strong style={{ fontSize: '1.05rem', color: '#B45309' }}>Rising Living Costs</strong>
-              <span className="badge badge-warning">Worth Watching</span>
+              <strong style={{ fontSize: '1.05rem', color: '#B45309' }}>
+                {calculations.earlyWarnings[0]?.category || 'Buffer Monitoring'}
+              </strong>
+              <span className={`badge ${calculations.earlyWarnings[0]?.severity === 'high' ? 'badge-danger' : 'badge-warning'}`}>
+                {calculations.earlyWarnings[0]?.severity === 'high' ? 'High Risk' : 'Worth Watching'}
+              </span>
             </div>
             <p style={{ fontSize: '0.825rem', color: '#92400E', marginTop: '0.35rem' }}>
-              Essential expenses rose 12% over 3 months. Emergency savings stand at 3.2 months.
+              {calculations.earlyWarnings[0]?.title || `Emergency buffer is at ${calculations.emergencyRunwayMonths} months.`}
             </p>
           </div>
 
           {/* Answer 3 */}
           <div style={{ backgroundColor: '#F0FDF4', padding: '1rem', borderRadius: '8px', border: '1px solid #BBF7D0' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#166534', textTransform: 'uppercase' }}>
-              3. What should I do?
+              3. {t('dashboard.whatShouldIDo', 'What should I do?')}
             </span>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
-              <strong style={{ fontSize: '1.05rem', color: '#166534' }}>Add ₹3,000/mo to Savings</strong>
+              <strong style={{ fontSize: '1.05rem', color: '#166534' }}>
+                {topIntervention?.title || 'Maintain Regular Savings'}
+              </strong>
             </div>
             <p style={{ fontSize: '0.825rem', color: '#15803D', marginTop: '0.35rem' }}>
-              A small automated monthly transfer strengthens your runway toward 6 months.
+              {topIntervention?.steps?.[0]?.title || topIntervention?.description || 'Automate small monthly contributions to stay financially resilient.'}
             </p>
           </div>
         </div>
@@ -111,7 +128,7 @@ export const Dashboard = ({ onNavigate }) => {
       {/* 4 Key Financial Cards */}
       <div className="metrics-grid">
         <MetricCard
-          label={simpleLanguage ? 'Money Coming In' : 'Monthly Income'}
+          label={t('dashboard.monthlyIncome', 'Monthly Income')}
           value={formatCurrency(calculations.totalIncome)}
           statusText="Stable"
           statusType="positive"
@@ -120,30 +137,30 @@ export const Dashboard = ({ onNavigate }) => {
         />
 
         <MetricCard
-          label={simpleLanguage ? 'Essential Needs' : 'Essential Expenses'}
+          label={t('dashboard.totalExpenses', 'Essential Expenses')}
           value={formatCurrency(calculations.essentialExpenses)}
-          statusText="55% of income"
-          statusType="warning"
+          statusText={`${calculations.essentialPct}% of income`}
+          statusType={calculations.essentialPct > 65 ? 'warning' : 'positive'}
           icon={Receipt}
           subtitle="Housing, food, utilities"
         />
 
         <MetricCard
-          label={simpleLanguage ? 'Money in Savings' : 'Total Savings'}
+          label={t('dashboard.emergencyBuffer', 'Total Savings')}
           value={formatCurrency(calculations.totalSavings)}
-          statusText="Growing"
-          statusType="positive"
+          statusText={`${calculations.emergencyRunwayMonths} mo runway`}
+          statusType={calculations.emergencyRunwayMonths < 3 ? 'warning' : 'positive'}
           icon={PiggyBank}
-          subtitle="3.2 months emergency cover"
+          subtitle={`${calculations.emergencyRunwayMonths} months emergency cover`}
         />
 
         <MetricCard
-          label={simpleLanguage ? 'Loan & Debt Payments' : 'Debt Payments'}
+          label={t('debt.monthlyEMI', 'Debt Payments')}
           value={`${formatCurrency(calculations.monthlyDebtPayments)}/mo`}
-          statusText="Moderate"
-          statusType="blue"
+          statusText={calculations.debtToIncomeRatio > 35 ? 'Elevated' : 'Moderate'}
+          statusType={calculations.debtToIncomeRatio > 35 ? 'warning' : 'blue'}
           icon={CreditCard}
-          subtitle="19% Debt-to-Income (Manageable)"
+          subtitle={`${calculations.debtToIncomeRatio}% Debt-to-Income (${calculations.debtToIncomeRatio > 35 ? 'Watch closely' : 'Manageable'})`}
         />
       </div>
 

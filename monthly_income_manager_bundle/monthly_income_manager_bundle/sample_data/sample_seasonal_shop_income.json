@@ -1,0 +1,18 @@
+{
+  "profile": "Seasonal Business / Retail Owner",
+  "monthly_income": [
+    { "month": "June", "income": 18000, "essential_expenses": 12000, "other_expenses": 4000 },
+    { "month": "July", "income": 15000, "essential_expenses": 12000, "other_expenses": 4000 },
+    { "month": "August", "income": 24000, "essential_expenses": 12000, "other_expenses": 5000 },
+    { "month": "September", "income": 35000, "essential_expenses": 13000, "other_expenses": 6000 },
+    { "month": "October", "income": 75000, "essential_expenses": 15000, "other_expenses": 8000 },
+    { "month": "November", "income": 82000, "essential_expenses": 15000, "other_expenses": 9000 }
+  ],
+  "expenses": 16000,
+  "savings": 65000,
+  "investments": 20000,
+  "loan_emi": 6500,
+  "financial_goal": "Working Capital Reserve",
+  "goal_amount": 150000,
+  "goal_months": 12
+}

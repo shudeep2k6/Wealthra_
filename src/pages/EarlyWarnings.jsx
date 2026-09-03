@@ -1,23 +1,25 @@
 import React from 'react';
 import { AlertTriangle, ShieldCheck, ArrowRight, Info } from 'lucide-react';
 import { useFinancial } from '../context/FinancialContext';
+import { useLanguage } from '../context/LanguageContext';
 import { WarningCard } from '../components/WarningCard';
 
 export const EarlyWarnings = ({ onNavigate }) => {
   const { calculations } = useFinancial();
+  const { t } = useLanguage();
 
   return (
     <div className="page-container fade-in">
       <div className="page-header">
         <div className="page-title-group">
-          <h1>Things Worth Paying Attention To</h1>
+          <h1>{t('warnings.title', 'Things Worth Paying Attention To')}</h1>
           <p>
-            Some changes in your finances may deserve attention. Early adjustments keep you in control before pressure builds.
+            {t('warnings.subtitle', 'Some changes in your finances may deserve attention. Early adjustments keep you in control before pressure builds.')}
           </p>
         </div>
         <div className="page-actions">
           <span className="badge badge-warning" style={{ fontSize: '0.85rem' }}>
-            4 Early Observations
+            4 {t('distress.monitoredPillars', 'Observations')}
           </span>
         </div>
       </div>
@@ -38,10 +40,10 @@ export const EarlyWarnings = ({ onNavigate }) => {
         <ShieldCheck size={26} color="#16A34A" style={{ flexShrink: 0 }} />
         <div>
           <strong style={{ display: 'block', fontSize: '0.95rem', color: '#166534' }}>
-            Responsible Guidance Philosophy
+            {t('warnings.philosophy', 'Responsible Guidance Philosophy')}
           </strong>
           <span style={{ fontSize: '0.875rem', color: '#15803D' }}>
-            These notices are not signs of failure — they are early headlights designed to help you strengthen your safety buffers calmly and comfortably.
+            {t('warnings.philosophy', 'These notices are not signs of failure — they are early headlights designed to help you strengthen your safety buffers calmly.')}
           </span>
         </div>
       </div>

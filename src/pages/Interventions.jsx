@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import { CheckCircle2, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
 import { useFinancial } from '../context/FinancialContext';
+import { useLanguage } from '../context/LanguageContext';
 import { RecommendationCard } from '../components/RecommendationCard';
 import { StrategyModal } from '../components/StrategyModal';
 
 export const Interventions = ({ onNavigate }) => {
   const { calculations } = useFinancial();
+  const { t } = useLanguage();
   const [selectedPlan, setSelectedPlan] = useState(null);
 
   return (
     <div className="page-container fade-in">
       <div className="page-header">
         <div className="page-title-group">
-          <h1>What You Can Do Today</h1>
+          <h1>{t('interventionsPage.title', 'What You Can Do Today')}</h1>
           <p>
-            Responsible, prioritized steps to strengthen your household finances before small concerns turn into stress.
+            {t('interventionsPage.subtitle', 'Responsible, prioritized steps to strengthen your household finances before small concerns turn into stress.')}
           </p>
         </div>
         <div className="page-actions">
           <span className="badge badge-positive" style={{ fontSize: '0.85rem' }}>
-            3 Active Action Paths
+            {t('interventionsPage.activePaths', '3 Active Action Paths')}
           </span>
         </div>
       </div>
@@ -40,10 +42,10 @@ export const Interventions = ({ onNavigate }) => {
         <Sparkles size={24} color="#2563EB" style={{ flexShrink: 0 }} />
         <div>
           <strong style={{ display: 'block', fontSize: '0.95rem', color: '#1E40AF' }}>
-            Action-Oriented Prevention
+            {t('interventionsPage.philosophyTitle', 'Action-Oriented Prevention')}
           </strong>
           <span style={{ fontSize: '0.875rem', color: '#1E3A8A' }}>
-            Prediction without action leaves you vulnerable. Following these three personalized interventions insulates your budget against unforeseen shocks.
+            {t('interventionsPage.philosophyDesc', 'Prediction without action leaves you vulnerable. Following these three personalized interventions insulates your budget against unforeseen shocks.')}
           </span>
         </div>
       </div>

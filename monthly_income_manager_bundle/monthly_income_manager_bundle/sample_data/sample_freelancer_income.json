@@ -1,0 +1,17 @@
+{
+  "profile": "Irregular Freelancer (Prompt Test Scenario)",
+  "monthly_income": [
+    { "month": "January", "income": 5000, "essential_expenses": 6000, "other_expenses": 2000 },
+    { "month": "February", "income": 30000, "essential_expenses": 6000, "other_expenses": 2000 },
+    { "month": "March", "income": 5000, "essential_expenses": 6000, "other_expenses": 2000 },
+    { "month": "April", "income": 18000, "essential_expenses": 6000, "other_expenses": 2000 },
+    { "month": "May", "income": 7500, "essential_expenses": 6000, "other_expenses": 2000 }
+  ],
+  "expenses": 8000,
+  "savings": 20000,
+  "investments": 5000,
+  "loan_emi": 2000,
+  "financial_goal": "Emergency Fund",
+  "goal_amount": 60000,
+  "goal_months": 12
+}

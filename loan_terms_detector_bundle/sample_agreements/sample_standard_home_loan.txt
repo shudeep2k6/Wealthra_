@@ -1,0 +1,11 @@
+MASTER HOUSING FINANCE CONTRACT
+
+Section 1.1 (Rate of Interest): The current applicable rate of interest is 8.75% p.a. comprising the benchmark repo rate of 6.50% plus a credit spread of 2.25%.
+Section 1.2 (Monthly Installments): The Borrower shall remit a monthly installment of Rs. 38,200 covering principal repayment and accrued monthly interest starting next month.
+Section 1.3 (Tenure): The loan shall be repaid over an amortization schedule spanning 20 years across 240 monthly installments.
+Section 1.4 (Origination Fee): A loan evaluation and administrative processing fee amounting to 0.5% will be deducted directly from the initial disbursement.
+Section 1.5 (Overdue Payment): Delayed payment of interest or principal beyond 3 days grace period will incur an overdue penal charge of 18.0% p.a. compounded monthly.
+Section 1.6 (Early Closure): No foreclosure charges shall be applicable on floating-rate individual term loans as per Reserve Bank of India consumer guidelines.
+Section 1.7 (Part-Prepayment): Partial prepayment is permitted up to 25% of the outstanding balance once in a financial year without any prepayment penalty.
+Section 1.8 (Property Protection): Property mortgaged under this loan facility must be insured against fire and earthquake with the Bank as sole loss payee.
+Section 1.9 (Credit Bureau Reporting): The Lender shall report payment performance, defaults, and overdue status to all statutory Credit Information Companies monthly.

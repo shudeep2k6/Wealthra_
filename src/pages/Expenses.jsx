@@ -8,28 +8,30 @@ import {
 } from 'recharts';
 import { Wallet, Receipt, PiggyBank, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useFinancial } from '../context/FinancialContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Expenses = ({ onNavigate }) => {
   const { calculations, formatCurrency } = useFinancial();
+  const { t } = useLanguage();
 
   const flowData = [
-    { name: 'Essential Spending', value: 27500, pct: 55, color: '#2563EB', desc: 'Housing, food, utilities, healthcare' },
-    { name: 'Discretionary Spending', value: 9500, pct: 19, color: '#F59E0B', desc: 'Shopping, dining, entertainment' },
-    { name: 'Remaining / Savings', value: 13000, pct: 26, color: '#16A34A', desc: 'Protected liquid cash and debt service' }
+    { name: t('expensesPage.essentialHeading', 'Essential Living Spending'), value: 27500, pct: 55, color: '#2563EB', desc: t('assessment.step2Title', 'Housing, food, utilities, healthcare') },
+    { name: t('expensesPage.discretionaryHeading', 'Discretionary Lifestyle Spending'), value: 9500, pct: 19, color: '#F59E0B', desc: t('assessment.discretionaryLabel', 'Shopping, dining, entertainment') },
+    { name: t('expensesPage.savingsHeading', 'Protected Savings Reserve'), value: 13000, pct: 26, color: '#16A34A', desc: t('assessment.step3Title', 'Protected liquid cash and debt service') }
   ];
 
   return (
     <div className="page-container fade-in">
       <div className="page-header">
         <div className="page-title-group">
-          <h1>Understand Your Monthly Money Flow</h1>
+          <h1>{t('expensesPage.title', 'Understand Your Monthly Money Flow')}</h1>
           <p>
-            A simple, transparent look at where your money goes each month without confusing accounting terms.
+            {t('expensesPage.subtitle', 'A simple, transparent look at where your money goes each month without confusing accounting terms.')}
           </p>
         </div>
         <div className="page-actions">
           <button className="btn btn-outline-primary btn-sm" onClick={() => onNavigate('assessment')}>
-            Update Monthly Expenses
+            {t('expensesPage.updateBtn', 'Update Monthly Expenses')}
           </button>
         </div>
       </div>
@@ -39,28 +41,28 @@ export const Expenses = ({ onNavigate }) => {
         <div className="card" style={{ padding: '1.25rem', borderLeft: '4px solid #2563EB' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
             <Wallet size={18} color="#2563EB" />
-            <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--color-text-secondary)' }}>Total Monthly Income</span>
+            <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--color-text-secondary)' }}>{t('expensesPage.monthlyInflows', 'Total Monthly Income')}</span>
           </div>
           <strong style={{ fontSize: '1.75rem', color: 'var(--color-navy)' }}>{formatCurrency(50000)}</strong>
-          <small style={{ display: 'block', color: '#16A34A', marginTop: '0.2rem', fontWeight: 600 }}>100% of inflows</small>
+          <small style={{ display: 'block', color: '#16A34A', marginTop: '0.2rem', fontWeight: 600 }}>{t('expensesPage.allInflows', '100% of inflows')}</small>
         </div>
 
         <div className="card" style={{ padding: '1.25rem', borderLeft: '4px solid #F59E0B' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
             <Receipt size={18} color="#F59E0B" />
-            <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--color-text-secondary)' }}>Total Monthly Expenses</span>
+            <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--color-text-secondary)' }}>{t('expensesPage.monthlyOutflows', 'Total Monthly Expenses')}</span>
           </div>
           <strong style={{ fontSize: '1.75rem', color: 'var(--color-navy)' }}>{formatCurrency(37000)}</strong>
-          <small style={{ display: 'block', color: 'var(--color-text-secondary)', marginTop: '0.2rem' }}>74% of income</small>
+          <small style={{ display: 'block', color: 'var(--color-text-secondary)', marginTop: '0.2rem' }}>{t('expensesPage.incomeShare', '{pct}% of income').replace('{pct}', '74')}</small>
         </div>
 
         <div className="card" style={{ padding: '1.25rem', borderLeft: '4px solid #16A34A' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
             <PiggyBank size={18} color="#16A34A" />
-            <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--color-text-secondary)' }}>Remaining / Free Cash</span>
+            <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--color-text-secondary)' }}>{t('expensesPage.freeCash', 'Remaining / Free Cash')}</span>
           </div>
           <strong style={{ fontSize: '1.75rem', color: '#16A34A' }}>{formatCurrency(13000)}</strong>
-          <small style={{ display: 'block', color: '#16A34A', marginTop: '0.2rem', fontWeight: 600 }}>26% savings margin</small>
+          <small style={{ display: 'block', color: '#16A34A', marginTop: '0.2rem', fontWeight: 600 }}>{t('expensesPage.cashSurplus', 'Monthly cash surplus')}</small>
         </div>
       </div>
 

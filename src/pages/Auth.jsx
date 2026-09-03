@@ -63,12 +63,13 @@ export const Auth = ({ onNavigate }) => {
     <div className="auth-page-wrapper">
       <div className="auth-card fade-in" style={{ maxWidth: '480px' }}>
         {/* Brand Header */}
-        <div className="auth-brand">
-          <div className="brand-logo" onClick={() => onNavigate('landing')} style={{ cursor: 'pointer' }}>
-            <div className="brand-icon-box" style={{ width: 38, height: 38 }}>
-              <ShieldAlert size={22} />
-            </div>
-            <span className="brand-name" style={{ fontSize: '1.4rem' }}>Wealthra</span>
+        <div className="auth-brand" style={{ textAlign: 'center' }}>
+          <div className="brand-logo" onClick={() => onNavigate('landing')} style={{ cursor: 'pointer', justifyContent: 'center', marginBottom: '0.5rem' }}>
+            <img
+              src="/wealthra_logo.png"
+              alt="Wealthra - Predict . Empower . Protect"
+              style={{ height: '48px', width: 'auto', objectFit: 'contain' }}
+            />
           </div>
           <p style={{ fontSize: '0.875rem' }}>Inclusive Digital Banking &amp; Wellness Platform</p>
         </div>

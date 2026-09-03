@@ -2,6 +2,7 @@ import React from 'react';
 import { ShieldCheck, Info } from 'lucide-react';
 import { ProgressBar } from './ProgressBar';
 import { useAccessibility } from '../context/AccessibilityContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export const WellnessScore = ({
   score = 74,
@@ -17,6 +18,7 @@ export const WellnessScore = ({
   }
 }) => {
   const { simpleLanguage } = useAccessibility();
+  const { t } = useLanguage();
 
   return (
     <div className="card" style={{ padding: '1.5rem' }}>
@@ -61,32 +63,32 @@ export const WellnessScore = ({
         {/* Right: Factor Progress Breakdown */}
         <div>
           <h4 style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.85rem' }}>
-            Score Factors Breakdown
+            {t('dashboard.factorBreakdown', 'Score Factors Breakdown')}
           </h4>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <ProgressBar
-              label={simpleLanguage ? 'Steady Income Coming In' : 'Income Stability'}
+              label={t('dashboard.incomeStability', 'Income Stability')}
               percentage={factors.incomeStability}
               benchmark="Stable at ₹50,000"
             />
             <ProgressBar
-              label={simpleLanguage ? 'Savings Safety Net' : 'Savings Safety'}
+              label={t('dashboard.savingsSafety', 'Savings Safety')}
               percentage={factors.savingsSafety}
               benchmark="Current: 3.2 months"
             />
             <ProgressBar
-              label={simpleLanguage ? 'Debt & Loan Burden' : 'Debt Health'}
+              label={t('dashboard.debtHealth', 'Debt Health')}
               percentage={factors.debtHealth}
               benchmark="Manageable at 19%"
             />
             <ProgressBar
-              label={simpleLanguage ? 'Spending Under Control' : 'Expense Control'}
+              label={t('dashboard.expenseControl', 'Expense Control')}
               percentage={factors.expenseControl}
               benchmark="Essentials at 55%"
             />
             <ProgressBar
-              label={simpleLanguage ? 'Emergency Readiness' : 'Emergency Preparedness'}
+              label={t('dashboard.emergencyPreparedness', 'Emergency Preparedness')}
               percentage={factors.emergencyPreparedness}
               benchmark="Buffer: ₹88,000"
             />

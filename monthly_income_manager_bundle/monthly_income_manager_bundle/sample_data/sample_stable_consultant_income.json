@@ -1,0 +1,17 @@
+{
+  "profile": "Stable Consultant",
+  "monthly_income": [
+    { "month": "January", "income": 55000, "essential_expenses": 20000, "other_expenses": 8000 },
+    { "month": "February", "income": 52000, "essential_expenses": 20000, "other_expenses": 8000 },
+    { "month": "March", "income": 58000, "essential_expenses": 20000, "other_expenses": 9000 },
+    { "month": "April", "income": 54000, "essential_expenses": 20000, "other_expenses": 8000 },
+    { "month": "May", "income": 56000, "essential_expenses": 20000, "other_expenses": 8500 }
+  ],
+  "expenses": 28000,
+  "savings": 140000,
+  "investments": 80000,
+  "loan_emi": 8000,
+  "financial_goal": "Wealth Accumulation",
+  "goal_amount": 500000,
+  "goal_months": 24
+}

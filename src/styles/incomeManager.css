@@ -1,0 +1,508 @@
+/* ==========================================================================
+   WEALTHRA - Monthly Income Manager Stylesheet (Pure Custom CSS)
+   ========================================================================== */
+
+.income-manager-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 3.5rem;
+}
+
+/* Header Banner */
+.income-header {
+  background: linear-gradient(135deg, #0B1220 0%, #1A2639 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.75rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.income-header::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.income-header-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.income-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(37, 99, 235, 0.2);
+  color: #93C5FD;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(147, 197, 253, 0.3);
+}
+
+.income-header h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.income-header p {
+  color: #94A3B8;
+  font-size: 0.95rem;
+  max-width: 820px;
+  line-height: 1.55;
+}
+
+/* Workspace Input Card */
+.income-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.income-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Presets Bar */
+.presets-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.presets-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.preset-chip-btn {
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  color: var(--color-navy);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.preset-chip-btn:hover {
+  border-color: var(--color-blue);
+  color: var(--color-blue);
+  background-color: var(--color-blue-subtle);
+}
+
+/* Month Table */
+.months-table-container {
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.months-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.months-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 2px solid var(--color-border);
+  background-color: #F8FAFC;
+}
+
+.months-table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.month-input-field {
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: #FFFFFF;
+  color: var(--color-navy);
+  transition: border-color var(--transition-fast);
+}
+
+.month-input-field:focus {
+  outline: none;
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+/* Baseline Parameters Grid */
+.params-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.param-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.param-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+/* Action Bar */
+.action-submit-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.analyze-income-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.analyze-income-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.32);
+}
+
+.analyze-income-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Results: Income Overview Grid (5 Cards) */
+.income-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.overview-metric-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+}
+
+.overview-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-hover);
+}
+
+.metric-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.metric-tag-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.metric-stat-value {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  letter-spacing: -0.02em;
+}
+
+.metric-stat-sub {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Financial Health & Risk Banner */
+.health-score-banner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem 1.75rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.health-score-banner.strong {
+  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+  border: 1px solid #BBF7D0;
+}
+
+.health-score-banner.healthy {
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  border: 1px solid #BFDBFE;
+}
+
+.health-score-banner.needs-improvement {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1px solid #FDE68A;
+}
+
+.health-score-banner.high-risk {
+  background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+  border: 1px solid #FECACA;
+}
+
+.score-badge-circle {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  border: 3px solid transparent;
+}
+
+.score-badge-circle.strong { border-color: #16A34A; }
+.score-badge-circle.healthy { border-color: #2563EB; }
+.score-badge-circle.needs-improvement { border-color: #D97706; }
+.score-badge-circle.high-risk { border-color: #DC2626; }
+
+.score-number-big {
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.score-number-big.strong { color: #16A34A; }
+.score-number-big.healthy { color: #2563EB; }
+.score-number-big.needs-improvement { color: #D97706; }
+.score-number-big.high-risk { color: #DC2626; }
+
+/* Income Buffer Spotlight */
+.buffer-spotlight-card {
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.buffer-gauge-wrap {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+
+.buffer-months-val {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #38BDF8;
+  line-height: 1;
+}
+
+/* Allocation Grid */
+.allocation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.alloc-item-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  background-color: #FFFFFF;
+  border-left: 4px solid var(--color-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.alloc-item-card.essential { border-left-color: #2563EB; }
+.alloc-item-card.emergency { border-left-color: #F59E0B; }
+.alloc-item-card.smoothing { border-left-color: #10B981; }
+.alloc-item-card.invest { border-left-color: #8B5CF6; }
+.alloc-item-card.flex { border-left-color: #EC4899; }
+
+.alloc-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.alloc-amount {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin: 0.25rem 0;
+}
+
+.alloc-pct-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-xs);
+  display: inline-block;
+  background-color: var(--color-surface-subtle);
+  color: var(--color-navy);
+}
+
+/* Charts Section */
+.charts-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .charts-grid-2col {
+    grid-template-columns: 1fr;
+  }
+  .health-score-banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* AI Insights List */
+.insights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.insight-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: #FFFFFF;
+}
+
+.insight-card.warning {
+  background-color: #FFFDF0;
+  border-color: #FDE68A;
+  border-left: 4px solid #F59E0B;
+}
+
+.insight-card.info {
+  background-color: #F0F7FF;
+  border-color: #BFDBFE;
+  border-left: 4px solid #2563EB;
+}
+
+.insight-card.action {
+  background-color: #FDF4FF;
+  border-color: #F5D0FE;
+  border-left: 4px solid #A855F7;
+}
+
+.insight-card.positive {
+  background-color: #F0FDF4;
+  border-color: #BBF7D0;
+  border-left: 4px solid #16A34A;
+}
+
+/* Future Wealth Table */
+.wealth-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.wealth-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  padding: 0.6rem 0.85rem;
+  background-color: #F8FAFC;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.wealth-table td {
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  color: var(--color-navy);
+}

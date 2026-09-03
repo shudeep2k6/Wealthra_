@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { CreditCard, ShieldCheck, AlertCircle, ArrowRight, HelpCircle, CheckCircle2 } from 'lucide-react';
 import { useFinancial } from '../context/FinancialContext';
 import { useAccessibility } from '../context/AccessibilityContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export const DebtHealth = ({ onNavigate }) => {
   const { calculations, formatCurrency } = useFinancial();
   const { simpleLanguage } = useAccessibility();
+  const { t } = useLanguage();
 
   // What-if simulator slider for debt stress
   const [extraDebtEMI, setExtraDebtEMI] = useState(0);
@@ -19,14 +21,18 @@ export const DebtHealth = ({ onNavigate }) => {
     <div className="page-container fade-in">
       <div className="page-header">
         <div className="page-title-group">
-          <h1>Debt &amp; Loan Health</h1>
+          <h1>{t('debt.title', 'Debt & Loan Health')}</h1>
           <p>
-            Understand your loans and repayments without confusion so you can stay comfortably ahead of monthly EMIs.
+            {t('debt.subtitle', 'Understand your loans and repayments without confusion so you can stay comfortably ahead of monthly EMIs.')}
           </p>
         </div>
-        <div className="page-actions">
+        <div className="page-actions" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <button className="btn btn-primary btn-sm" onClick={() => onNavigate('loan-detector')}>
+            <span>{t('debt.scanAgreement', 'Scan Loan Agreement')}</span>
+            <ArrowRight size={14} />
+          </button>
           <button className="btn btn-outline-primary btn-sm" onClick={() => onNavigate('guidance')}>
-            What if I cannot repay a loan?
+            {t('debt.whatIfCannotRepay', 'What if I cannot repay a loan?')}
           </button>
         </div>
       </div>
@@ -34,19 +40,19 @@ export const DebtHealth = ({ onNavigate }) => {
       {/* 4 Cards Overview */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginBottom: '1.5rem' }}>
         <div className="card" style={{ padding: '1.25rem' }}>
-          <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '0.25rem' }}>Total Debt Outstanding</span>
+          <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '0.25rem' }}>{t('debt.totalOutstanding', 'Total Debt Outstanding')}</span>
           <strong style={{ fontSize: '1.75rem', color: 'var(--color-navy)' }}>{formatCurrency(380000)}</strong>
           <small style={{ display: 'block', color: 'var(--color-text-muted)', marginTop: '0.2rem' }}>Home, personal &amp; credit card</small>
         </div>
 
         <div className="card" style={{ padding: '1.25rem' }}>
-          <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '0.25rem' }}>Monthly Loan Payments</span>
+          <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '0.25rem' }}>{t('debt.monthlyEMI', 'Monthly Loan Payments')}</span>
           <strong style={{ fontSize: '1.75rem', color: 'var(--color-navy)' }}>{formatCurrency(totalEMI)}</strong>
           <small style={{ display: 'block', color: '#16A34A', marginTop: '0.2rem', fontWeight: 600 }}>Active Auto-Debit</small>
         </div>
 
         <div className="card" style={{ padding: '1.25rem' }}>
-          <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '0.25rem' }}>Debt-to-Income Proportion</span>
+          <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '0.25rem' }}>{t('debt.dtiProportion', 'Debt-to-Income Proportion')}</span>
           <strong style={{ fontSize: '1.75rem', color: isManageable ? 'var(--color-navy)' : '#DC2626' }}>{currentDTI}%</strong>
           <small style={{ display: 'block', color: 'var(--color-text-secondary)', marginTop: '0.2rem' }}>Safe guideline: &lt; 35%</small>
         </div>

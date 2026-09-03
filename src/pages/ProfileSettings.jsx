@@ -1,24 +1,13 @@
 import React, { useState } from 'react';
-import { User, Eye, Bell, Shield, LogOut, Check, Sparkles, Volume2, Type } from 'lucide-react';
+import { User, Bell, Shield, LogOut, Check, Globe } from 'lucide-react';
 import { useFinancial } from '../context/FinancialContext';
-import { useAccessibility } from '../context/AccessibilityContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ProfileSettings = ({ onNavigate }) => {
   const { currentUser, setCurrentUser, setIsAuthenticated } = useFinancial();
-  const {
-    textSize,
-    setTextSize,
-    contrastMode,
-    setContrastMode,
-    reduceMotion,
-    setReduceMotion,
-    simpleLanguage,
-    setSimpleLanguage,
-    voiceEnabled,
-    setVoiceEnabled
-  } = useAccessibility();
+  const { currentLanguage, setLanguage, languages, t } = useLanguage();
 
-  const [activeTab, setActiveTab] = useState('accessibility');
+  const [activeTab, setActiveTab] = useState('personal');
   const [profileForm, setProfileForm] = useState({ ...currentUser });
   const [isSaved, setIsSaved] = useState(false);
 
@@ -45,8 +34,8 @@ export const ProfileSettings = ({ onNavigate }) => {
     <div className="page-container fade-in">
       <div className="page-header">
         <div className="page-title-group">
-          <h1>Profile &amp; Accessibility Settings</h1>
-          <p>Manage your personal banking preferences, accessibility options, and security settings.</p>
+          <h1>{t('profile.title', 'Profile & Settings')}</h1>
+          <p>{t('profile.subtitle', 'Manage your personal banking preferences, notification alerts, and security settings.')}</p>
         </div>
       </div>
 
@@ -55,20 +44,11 @@ export const ProfileSettings = ({ onNavigate }) => {
         <div className="settings-nav">
           <button
             type="button"
-            className={`settings-nav-item ${activeTab === 'accessibility' ? 'active' : ''}`}
-            onClick={() => setActiveTab('accessibility')}
-          >
-            <Eye size={16} />
-            <span>Accessibility &amp; Comfort</span>
-          </button>
-
-          <button
-            type="button"
             className={`settings-nav-item ${activeTab === 'personal' ? 'active' : ''}`}
             onClick={() => setActiveTab('personal')}
           >
             <User size={16} />
-            <span>Personal Information</span>
+            <span>{t('profile.personalInfo', 'Personal Information')}</span>
           </button>
 
           <button
@@ -77,7 +57,7 @@ export const ProfileSettings = ({ onNavigate }) => {
             onClick={() => setActiveTab('notifications')}
           >
             <Bell size={16} />
-            <span>Alert Preferences</span>
+            <span>{t('profile.alerts', 'Alert Preferences')}</span>
           </button>
 
           <button
@@ -86,148 +66,64 @@ export const ProfileSettings = ({ onNavigate }) => {
             onClick={() => setActiveTab('security')}
           >
             <Shield size={16} />
-            <span>Security &amp; Account</span>
+            <span>{t('profile.security', 'Security & Account')}</span>
           </button>
         </div>
 
         {/* Settings Content Pane */}
         <div className="settings-pane">
-          {/* TAB 1: Accessibility & Comfort */}
-          {activeTab === 'accessibility' && (
-            <div className="fade-in">
-              <h2 className="settings-section-title">Accessibility &amp; Viewing Preferences</h2>
-              <p className="settings-section-sub">
-                Configure typography scale, contrast, and guidance assistance. All changes apply instantly.
-              </p>
-
-              {/* Text Size */}
-              <div style={{ marginBottom: '1.75rem' }}>
-                <strong style={{ display: 'block', fontSize: '0.95rem', color: 'var(--color-navy)', marginBottom: '0.6rem' }}>
-                  Text Size Scaling
-                </strong>
-                <div className="toggle-group-row">
-                  <button
-                    type="button"
-                    className={`toggle-pill ${textSize === 'normal' ? 'active' : ''}`}
-                    onClick={() => setTextSize('normal')}
-                  >
-                    <span>A</span> Standard (16px)
-                  </button>
-                  <button
-                    type="button"
-                    className={`toggle-pill ${textSize === 'large' ? 'active' : ''}`}
-                    onClick={() => setTextSize('large')}
-                  >
-                    <span style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>A+</span> Large (19px)
-                  </button>
-                  <button
-                    type="button"
-                    className={`toggle-pill ${textSize === 'xlarge' ? 'active' : ''}`}
-                    onClick={() => setTextSize('xlarge')}
-                  >
-                    <span style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>A++</span> Extra Large (22px)
-                  </button>
-                </div>
-              </div>
-
-              {/* Contrast Mode */}
-              <div style={{ marginBottom: '1.75rem' }}>
-                <strong style={{ display: 'block', fontSize: '0.95rem', color: 'var(--color-navy)', marginBottom: '0.6rem' }}>
-                  Contrast &amp; Colors (WCAG AAA)
-                </strong>
-                <div className="toggle-group-row">
-                  <button
-                    type="button"
-                    className={`toggle-pill ${contrastMode === 'standard' ? 'active' : ''}`}
-                    onClick={() => setContrastMode('standard')}
-                  >
-                    Standard Banking Palette
-                  </button>
-                  <button
-                    type="button"
-                    className={`toggle-pill ${contrastMode === 'high-contrast' ? 'active' : ''}`}
-                    onClick={() => setContrastMode('high-contrast')}
-                  >
-                    High Contrast (Dark &amp; Sharp)
-                  </button>
-                </div>
-              </div>
-
-              {/* Reading Mode */}
-              <div style={{ marginBottom: '1.75rem' }}>
-                <strong style={{ display: 'block', fontSize: '0.95rem', color: 'var(--color-navy)', marginBottom: '0.6rem' }}>
-                  Simple Language Mode
-                </strong>
-                <div className="toggle-group-row">
-                  <button
-                    type="button"
-                    className={`toggle-pill ${!simpleLanguage ? 'active' : ''}`}
-                    onClick={() => setSimpleLanguage(false)}
-                  >
-                    Standard Terminology
-                  </button>
-                  <button
-                    type="button"
-                    className={`toggle-pill ${simpleLanguage ? 'active' : ''}`}
-                    onClick={() => setSimpleLanguage(true)}
-                  >
-                    <Sparkles size={14} style={{ display: 'inline', marginRight: '4px' }} />
-                    Simple Everyday Language (Active)
-                  </button>
-                </div>
-              </div>
-
-              {/* Motion and Voice Toggles */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
-                <div style={{ padding: '1rem', border: '1px solid var(--color-border)', borderRadius: '8px', backgroundColor: 'var(--color-surface-subtle)' }}>
-                  <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--color-navy)', marginBottom: '0.25rem' }}>
-                    Screen Motion
-                  </strong>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '0.65rem' }}>
-                    Removes all screen slide and fade effects
-                  </span>
-                  <button
-                    type="button"
-                    className={`btn btn-sm ${reduceMotion ? 'btn-primary' : 'btn-secondary'}`}
-                    onClick={() => setReduceMotion(!reduceMotion)}
-                    style={{ width: '100%' }}
-                  >
-                    {reduceMotion ? 'Reduced Motion: ON' : 'Normal Motion'}
-                  </button>
-                </div>
-
-                <div style={{ padding: '1rem', border: '1px solid var(--color-border)', borderRadius: '8px', backgroundColor: 'var(--color-surface-subtle)' }}>
-                  <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--color-navy)', marginBottom: '0.25rem' }}>
-                    Voice Assistance
-                  </strong>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', display: 'block', marginBottom: '0.65rem' }}>
-                    Enables voice recognition &amp; spoken prompts
-                  </span>
-                  <button
-                    type="button"
-                    className={`btn btn-sm ${voiceEnabled ? 'btn-primary' : 'btn-secondary'}`}
-                    onClick={() => setVoiceEnabled(!voiceEnabled)}
-                    style={{ width: '100%' }}
-                  >
-                    <Volume2 size={14} />
-                    <span>{voiceEnabled ? 'Voice Guidance: ON' : 'Enable Voice'}</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 2: Personal Information */}
+          {/* TAB 1: Personal Information */}
           {activeTab === 'personal' && (
             <form onSubmit={handleProfileSubmit} className="fade-in">
-              <h2 className="settings-section-title">Personal Information</h2>
+              <h2 className="settings-section-title">{t('profile.personalInfo', 'Personal Information')}</h2>
               <p className="settings-section-sub">
                 Update your primary contact details and demographic settings.
               </p>
 
+              {/* 5-Language Selection Grid */}
+              <div style={{ marginBottom: '1.5rem', padding: '1.25rem', backgroundColor: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--color-border)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                  <Globe size={18} color="#2563EB" />
+                  <strong style={{ fontSize: '0.95rem', color: 'var(--color-navy)' }}>
+                    {t('profile.language', 'Platform Language / भाषा चुनें')}
+                  </strong>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem' }}>
+                  {languages.map((lang) => {
+                    const isSelected = currentLanguage === lang.code;
+                    return (
+                      <button
+                        key={lang.code}
+                        type="button"
+                        onClick={() => setLanguage(lang.code)}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.65rem 0.85rem',
+                          backgroundColor: isSelected ? 'var(--color-blue-subtle)' : '#FFFFFF',
+                          border: isSelected ? '2px solid var(--color-blue)' : '1px solid var(--color-border)',
+                          borderRadius: '8px',
+                          cursor: 'pointer',
+                          fontWeight: isSelected ? 700 : 500,
+                          color: isSelected ? 'var(--color-blue)' : 'var(--color-navy)',
+                          transition: 'all 0.15s ease'
+                        }}
+                      >
+                        <div style={{ textAlign: 'left' }}>
+                          <span style={{ display: 'block', fontSize: '1rem' }}>{lang.flag} {lang.nativeName}</span>
+                          <span style={{ fontSize: '0.725rem', color: 'var(--color-text-muted)' }}>{lang.name}</span>
+                        </div>
+                        {isSelected && <Check size={16} color="#2563EB" />}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               <div className="fields-2col">
                 <div className="form-group">
-                  <label className="form-label" htmlFor="prof-name">Full Name</label>
+                  <label className="form-label" htmlFor="prof-name">{t('profile.fullName', 'Full Name')}</label>
                   <input
                     id="prof-name"
                     type="text"
@@ -238,7 +134,7 @@ export const ProfileSettings = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label" htmlFor="prof-email">Email Address</label>
+                  <label className="form-label" htmlFor="prof-email">{t('profile.email', 'Email Address')}</label>
                   <input
                     id="prof-email"
                     type="email"
@@ -249,7 +145,7 @@ export const ProfileSettings = ({ onNavigate }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label" htmlFor="prof-mobile">Mobile Number (SMS Alerts)</label>
+                  <label className="form-label" htmlFor="prof-mobile">{t('profile.phone', 'Mobile Number (SMS Alerts)')}</label>
                   <input
                     id="prof-mobile"
                     type="text"
@@ -273,7 +169,7 @@ export const ProfileSettings = ({ onNavigate }) => {
 
               <button type="submit" className="btn btn-primary" style={{ marginTop: '0.75rem' }}>
                 <Check size={16} />
-                <span>{isSaved ? 'Saved Successfully!' : 'Save Personal Details'}</span>
+                <span>{isSaved ? 'Saved Successfully!' : t('profile.saveChanges', 'Save Personal Details')}</span>
               </button>
             </form>
           )}
