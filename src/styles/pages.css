@@ -1,0 +1,895 @@
+/* ==========================================================================
+   WEALTHRA - Page-Specific Styling (Pure Custom CSS)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. LANDING PAGE
+   -------------------------------------------------------------------------- */
+.landing-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 0%, #F1F5F9 0%, #F8FAFC 60%);
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-nav {
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.landing-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.landing-hero {
+  padding: 4.5rem 1.5rem 3.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+  font-size: 0.8125rem;
+  color: var(--color-navy);
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+}
+
+.hero-pill-badge .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-positive);
+}
+
+.landing-hero h1 {
+  font-size: 3.25rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.25rem;
+  max-width: 850px;
+}
+
+.landing-hero .hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  max-width: 680px;
+  margin-bottom: 2.25rem;
+  line-height: 1.6;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+/* Hero Dashboard Visual Preview */
+.hero-visual-wrapper {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.hero-preview-topbar {
+  padding: 0.75rem 1.25rem;
+  background-color: #F8FAFC;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-preview-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.preview-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: #CBD5E1;
+}
+
+.hero-preview-body {
+  padding: 1.5rem;
+  background-color: #FFFFFF;
+}
+
+.landing-features-section {
+  padding: 4.5rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-heading-center {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-heading-center h2 {
+  font-size: 2rem;
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+}
+
+.features-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.feature-box {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.feature-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-blue-subtle);
+  color: var(--color-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+  background-color: #FFFFFF;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. AUTHENTICATION (LOGIN / SIGNUP)
+   -------------------------------------------------------------------------- */
+.auth-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  padding: 1.5rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2.25rem 2rem;
+}
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.5rem;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.65rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.auth-tab-btn.active {
+  color: var(--color-blue);
+  border-bottom-color: var(--color-blue);
+}
+
+.auth-demo-banner {
+  background-color: #F8FAFC;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-demo-banner p {
+  font-size: 0.8rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   3. FINANCIAL ASSESSMENT (6-STEP WIZARD)
+   -------------------------------------------------------------------------- */
+.assessment-layout {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Step Progress Indicator Bar */
+.assessment-steps-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 1.25rem;
+  overflow-x: auto;
+}
+
+.step-indicator-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #F1F5F9;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.step-indicator-item.active .step-circle {
+  background-color: var(--color-blue);
+  color: white;
+  border-color: var(--color-blue);
+}
+
+.step-indicator-item.completed .step-circle {
+  background-color: var(--color-positive-bg);
+  color: var(--color-positive);
+  border-color: var(--color-positive-border);
+}
+
+.step-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.step-indicator-item.active .step-label {
+  color: var(--color-navy);
+  font-weight: 600;
+}
+
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background-color: var(--color-border);
+  margin: 0 0.6rem;
+  min-width: 16px;
+}
+
+.step-connector.completed {
+  background-color: var(--color-positive);
+}
+
+/* Form Section Inside Card */
+.form-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.15rem;
+  color: var(--color-navy);
+  margin-bottom: 0.35rem;
+}
+
+.form-section-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.fields-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-wizard-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Habits Question List */
+.habits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.habit-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background-color: #F8FAFC;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.habit-item:hover {
+  background-color: #F1F5F9;
+}
+
+.habit-question {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #CBD5E1;
+  border-radius: 24px;
+  transition: 0.2s;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--color-blue);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+}
+
+/* Live Assessment Summary Sidebar */
+.assessment-live-sidebar {
+  position: sticky;
+  top: calc(var(--topbar-height) + 1.5rem);
+}
+
+.assessment-metric-pill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0.85rem;
+  background-color: #F8FAFC;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--color-border);
+  font-size: 0.8125rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. CRISIS PREDICTION PAGE
+   -------------------------------------------------------------------------- */
+.prediction-overview-banner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.prediction-stat-box {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Horizontal Risk Spectrum Scale */
+.risk-scale-card {
+  margin-bottom: 1.5rem;
+}
+
+.risk-scale-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.scale-segment {
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid transparent;
+  transition: transform var(--transition-fast);
+}
+
+.scale-segment.active-segment {
+  box-shadow: 0 0 0 2px var(--color-navy);
+  transform: translateY(-2px);
+}
+
+.scale-segment-low { background-color: #F0FDF4; border-color: #BBF7D0; color: #16A34A; }
+.scale-segment-mod { background-color: #FFFBEB; border-color: #FDE68A; color: #B45309; }
+.scale-segment-high { background-color: #FFF7ED; border-color: #FED7AA; color: #C2410C; }
+.scale-segment-crit { background-color: #FEF2F2; border-color: #FECACA; color: #DC2626; }
+
+.scale-segment-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.scale-segment-range {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* Risk Factors Grid */
+.risk-factors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.risk-factor-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: all var(--transition-fast);
+}
+
+.risk-factor-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.factor-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.factor-card-title {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.factor-card-desc {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Interactive Stress-Testing Simulator */
+.stress-tester-box {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.stress-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.stress-slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stress-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.stress-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 4px;
+  outline: none;
+}
+
+.stress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-blue);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.stress-result-banner {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background-color: #F8FAFC;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. EXPENSE ANALYSIS PAGE
+   -------------------------------------------------------------------------- */
+.expense-donut-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.budget-rules-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rule-comparison-item {
+  padding: 0.85rem;
+  background-color: #F8FAFC;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. FINANCIAL INSIGHTS PAGE
+   -------------------------------------------------------------------------- */
+.insights-tabs-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.insight-tab-pill {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.insight-tab-pill.active {
+  background-color: var(--color-navy);
+  color: white;
+  border-color: var(--color-navy);
+}
+
+.insights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.insight-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.35rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.insight-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.insight-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.insight-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.insight-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.insight-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.insight-text {
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   8. RECOMMENDATIONS PAGE
+   -------------------------------------------------------------------------- */
+.recommendations-header-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.stability-goal-box {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rec-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.rec-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.rec-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.rec-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.rec-index {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.rec-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.rec-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   9. PROFILE & SETTINGS
+   -------------------------------------------------------------------------- */
+.settings-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.settings-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-right: 1px solid var(--color-border);
+  padding-right: 1rem;
+}
+
+.settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.settings-nav-item.active {
+  background-color: var(--color-blue-subtle);
+  color: var(--color-blue);
+  font-weight: 600;
+}
+
+.settings-pane {
+  padding-left: 0.5rem;
+}
+
+.settings-section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 0.25rem;
+}
+
+.settings-section-sub {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive Pages Breakpoints */
+@media (max-width: 992px) {
+  .landing-hero h1 { font-size: 2.35rem; }
+  .features-grid-3col { grid-template-columns: 1fr; }
+  .assessment-layout { grid-template-columns: 1fr; }
+  .prediction-overview-banner { grid-template-columns: 1fr; }
+  .stress-controls-grid { grid-template-columns: 1fr; }
+  .expense-donut-layout { grid-template-columns: 1fr; }
+  .settings-grid { grid-template-columns: 1fr; }
+  .settings-nav { border-right: none; border-bottom: 1px solid var(--color-border); padding-bottom: 1rem; flex-direction: row; overflow-x: auto; }
+  .rec-card { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  .fields-2col { grid-template-columns: 1fr; }
+  .risk-scale-bar { grid-template-columns: 1fr 1fr; }
+}

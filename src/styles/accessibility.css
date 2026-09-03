@@ -1,0 +1,247 @@
+/* ==========================================================================
+   WEALTHRA - Accessibility Styles & Modes (WCAG AAA & Cognitive Accessibility)
+   ========================================================================== */
+
+/* Focus Visible Rings for Keyboard & Switch Device Navigation */
+*:focus-visible {
+  outline: 3px solid #2563EB !important;
+  outline-offset: 3px !important;
+}
+
+/* Minimum 48px Touch Targets for Motor Accessibility */
+button, 
+.btn, 
+.form-input, 
+.sidebar-link,
+.toggle-switch,
+.icon-button {
+  min-height: 44px;
+}
+
+.btn {
+  min-height: 48px;
+  padding: 0.65rem 1.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   1. TEXT SIZE SCALING MODES
+   -------------------------------------------------------------------------- */
+html[data-text-size="normal"] {
+  font-size: 16px;
+}
+
+html[data-text-size="large"] {
+  font-size: 19px;
+}
+
+html[data-text-size="xlarge"] {
+  font-size: 22px;
+}
+
+html[data-text-size="large"] .metric-value,
+html[data-text-size="xlarge"] .metric-value {
+  font-size: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. HIGH CONTRAST MODE (WCAG AAA Compliant)
+   -------------------------------------------------------------------------- */
+html[data-contrast="high-contrast"] {
+  --color-bg: #000000;
+  --color-surface: #121212;
+  --color-surface-hover: #1E1E1E;
+  --color-surface-subtle: #242424;
+  --color-border: #FFFFFF;
+  --color-border-hover: #FACC15;
+
+  --color-navy: #FFFFFF;
+  --color-dark-blue: #FFFFFF;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E2E8F0;
+  --color-text-muted: #CBD5E1;
+
+  --color-blue: #60A5FA;
+  --color-blue-hover: #93C5FD;
+  --color-blue-subtle: #1E3A8A;
+  --color-blue-border: #60A5FA;
+
+  --color-positive: #4ADE80;
+  --color-positive-bg: #052E16;
+  --color-positive-border: #4ADE80;
+
+  --color-warning: #FBBF24;
+  --color-warning-bg: #451A03;
+  --color-warning-border: #FBBF24;
+
+  --color-danger: #F87171;
+  --color-danger-bg: #450A0A;
+  --color-danger-border: #F87171;
+}
+
+html[data-contrast="high-contrast"] *:focus-visible {
+  outline: 3px solid #FACC15 !important;
+  outline-offset: 4px !important;
+}
+
+html[data-contrast="high-contrast"] .card,
+html[data-contrast="high-contrast"] .metric-card,
+html[data-contrast="high-contrast"] .warning-card,
+html[data-contrast="high-contrast"] .recommendation-card {
+  border: 2px solid #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+html[data-contrast="high-contrast"] .btn-primary {
+  background-color: #FACC15 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  border: 2px solid #FFFFFF !important;
+}
+
+html[data-contrast="high-contrast"] .btn-secondary {
+  background-color: #121212 !important;
+  color: #FFFFFF !important;
+  border: 2px solid #FFFFFF !important;
+}
+
+html[data-contrast="high-contrast"] .sidebar {
+  border-right: 2px solid #FFFFFF !important;
+}
+
+html[data-contrast="high-contrast"] .topbar {
+  border-bottom: 2px solid #FFFFFF !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. REDUCE MOTION MODE
+   -------------------------------------------------------------------------- */
+html[data-reduce-motion="true"] *,
+html[data-reduce-motion="true"] *::before,
+html[data-reduce-motion="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. ACCESSIBILITY MODAL & FLOATING PANEL
+   -------------------------------------------------------------------------- */
+.accessibility-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #0B1220;
+  color: #FFFFFF;
+  border: 2px solid #2563EB;
+  border-radius: 9999px;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.accessibility-bar-btn:hover {
+  background-color: #111827;
+  transform: translateY(-1px);
+}
+
+.accessibility-panel-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 18, 32, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.accessibility-panel-dialog {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  max-width: 580px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.panel-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.6rem;
+}
+
+.toggle-group-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.toggle-pill {
+  flex: 1;
+  min-width: 110px;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.toggle-pill.active {
+  border-color: var(--color-blue);
+  background-color: var(--color-blue-subtle);
+  color: var(--color-blue);
+}
+
+html[data-contrast="high-contrast"] .toggle-pill.active {
+  border-color: #FACC15;
+  background-color: #242424;
+  color: #FACC15;
+}
+
+/* --------------------------------------------------------------------------
+   5. VOICE ASSISTANT MODAL & TRIGGER
+   -------------------------------------------------------------------------- */
+.voice-assistant-modal {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 380px;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-blue);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  z-index: 990;
+  overflow: hidden;
+}
+
+.voice-mic-wave {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-blue-subtle);
+  color: var(--color-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  border: 2px solid var(--color-blue);
+  animation: pulseMic 2s infinite;
+}
+
+@keyframes pulseMic {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+  70% { box-shadow: 0 0 0 16px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
